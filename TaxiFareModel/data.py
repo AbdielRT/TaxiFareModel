@@ -3,12 +3,9 @@ import pandas as pd
 AWS_BUCKET_PATH = "s3://wagon-public-datasets/taxi-fare-train.csv"
 
 
-def get_data(nrows=10_000, from_api=False):
-    '''returns a DataFrame with nrows from s3 bucket if from_api=True'''
-    if from_api:
-        df = pd.read_csv(AWS_BUCKET_PATH, nrows=nrows)
-    else:
-        df = pd.read_csv('/Users/art/code/AbdielRT/TaxiFareModel/raw_data/train_1k.csv')
+def get_data(url=AWS_BUCKET_PATH,nrows=10_000):
+    '''returns a DataFrame with nrows from s3 bucket or a local path'''
+    df = pd.read_csv(url, nrows=nrows)
     return df
 
 
